@@ -1,2 +1,2 @@
-# Rohlik
+# Rohlik - Jandreski Martin
 Case Study Java Developer
