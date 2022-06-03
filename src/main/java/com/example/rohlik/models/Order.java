@@ -1,16 +1,20 @@
 package com.example.rohlik.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 
 @Entity
+@Table(name = "myOrder")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<ItemInOrder> itemsInOrder;
     private boolean payment;
     private Date creationDate;
@@ -57,4 +61,6 @@ public class Order {
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
+
+
 }

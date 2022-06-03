@@ -1,5 +1,6 @@
 package com.example.rohlik.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jdk.jfr.Enabled;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ public class ItemInOrder {
     private Product product;
     private int quantity;
     @ManyToOne
+    @JsonIgnore
     private Order order;
 
     public ItemInOrder() {

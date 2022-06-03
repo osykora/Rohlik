@@ -24,12 +24,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public List<Product> findAll() {
-        return productRepository.findAll();
-    }
-
-    @Override
-    public ResponseEntity<Object> createProduct(String name, long quantityInStock, int pricePerUnit) {
+    public ResponseEntity<Object> createProduct(String name, Integer quantityInStock, Integer pricePerUnit) {
         productRepository.save(new Product(name,quantityInStock,pricePerUnit));
         return ResponseEntity.status(HttpStatus.OK).body("Product created.");
     }
@@ -54,12 +49,23 @@ public class ProductServiceImpl implements ProductService {
     public ResponseEntity<Object> updateProduct(long id, Product updatedProduct) {
         Optional<Product> product = productRepository.findById(id);
         if (product.isPresent()){
-            product.get().setName(updatedProduct.getName());
-            product.get().setPricePerUnit(updatedProduct.getPricePerUnit());
-            product.get().setQuantityInStock(updatedProduct.getQuantityInStock());
+            if (updatedProduct.getName()!=null){
+                product.get().setName(updatedProduct.getName());
+            }
+            if (updatedProduct.getPricePerUnit()!=null){
+                product.get().setPricePerUnit(updatedProduct.getPricePerUnit());
+            }
+            if (updatedProduct.getQuantityInStock()!=null){
+                product.get().setQuantityInStock(updatedProduct.getQuantityInStock());
+            }
             productRepository.save(product.get());
             return ResponseEntity.status(HttpStatus.OK).body("Product updated");
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This product does not exist.");
+    }
+
+    @Override
+    public Product findProductByName(String name) {
+        return productRepository.findProductByName(name);
     }
 }

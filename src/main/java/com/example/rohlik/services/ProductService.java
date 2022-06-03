@@ -6,10 +6,10 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface ProductService {
-    List<Product> findAll();
-    ResponseEntity<Object>  createProduct(String name, long quantityInStock, int pricePerUnit);
+    ResponseEntity<Object>  createProduct(String name, Integer quantityInStock, Integer pricePerUnit);
     void updateProductQuantityInStock(Product product, int quantity);
     ResponseEntity<Object> deleteProduct(long id);
     ResponseEntity<Object> updateProduct(long id, Product product);
+    Product findProductByName(String name);
 
 }

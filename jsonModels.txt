@@ -1,0 +1,26 @@
+{
+    "name": "vejce",
+    "quantityInStock": 150,
+    "pricePerUnit": 5
+}
+
+
+
+
+
+
+
+[ 
+{
+    "name": "rajce",
+    "count": 20
+},
+{
+    "name": "mliko",
+    "count": 20
+},
+{
+    "name": "rohlik",
+    "count": 30
+}
+]

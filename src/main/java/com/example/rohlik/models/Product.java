@@ -1,6 +1,7 @@
 package com.example.rohlik.models;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -8,13 +9,13 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    private long quantityInStock;
-    private int pricePerUnit;
+    private Integer quantityInStock;
+    private Integer pricePerUnit;
 
     public Product() {
     }
 
-    public Product(String name, long quantityInStock, int pricePerUnit) {
+    public Product(String name, Integer quantityInStock, Integer pricePerUnit) {
         this.name = name;
         this.quantityInStock = quantityInStock;
         this.pricePerUnit = pricePerUnit;
@@ -36,19 +37,19 @@ public class Product {
         this.name = name;
     }
 
-    public long getQuantityInStock() {
+    public Integer getQuantityInStock() {
         return quantityInStock;
     }
 
-    public void setQuantityInStock(long quantityInStock) {
+    public void setQuantityInStock(Integer quantityInStock) {
         this.quantityInStock = quantityInStock;
     }
 
-    public int getPricePerUnit() {
+    public Integer getPricePerUnit() {
         return pricePerUnit;
     }
 
-    public void setPricePerUnit(int pricePerUnit) {
+    public void setPricePerUnit(Integer pricePerUnit) {
         this.pricePerUnit = pricePerUnit;
     }
 }
