@@ -26,7 +26,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ResponseEntity<Object> createProduct(String name, Integer quantityInStock, Integer pricePerUnit) {
         productRepository.save(new Product(name,quantityInStock,pricePerUnit));
-        return ResponseEntity.status(HttpStatus.OK).body("Product created.");
+        return ResponseEntity.status(HttpStatus.OK).body("Product is created successfully");
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ProductServiceImpl implements ProductService {
         Optional<Product> product = productRepository.findById(id);
         if (product.isPresent()){
             productRepository.delete(product.get());
-            return ResponseEntity.status(HttpStatus.OK).body("Product deleted");
+            return ResponseEntity.status(HttpStatus.OK).body("Product is deleted successfully");
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This product does not exist.");
     }
@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
                 product.get().setQuantityInStock(updatedProduct.getQuantityInStock());
             }
             productRepository.save(product.get());
-            return ResponseEntity.status(HttpStatus.OK).body("Product updated");
+            return ResponseEntity.status(HttpStatus.OK).body("Product is updated successfully");
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This product does not exist.");
     }

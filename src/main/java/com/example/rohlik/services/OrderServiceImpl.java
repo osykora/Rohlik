@@ -25,7 +25,7 @@ public class OrderServiceImpl implements OrderService {
         this.itemInOrderRepository = itemInOrderRepository;
         this.productService = productService;
         Timer timer = new Timer();
-        timer.schedule(task, 0, 1000L * 60L);
+        timer.schedule(task, 0, 1000L * 30L);
     }
 
 
@@ -78,7 +78,7 @@ public class OrderServiceImpl implements OrderService {
         Optional<Order> order = orderRepository.findById(id);
         if (order.isPresent()) {
             if (order.get().isPayment()) {
-                return ResponseEntity.status(HttpStatus.OK).body("Payment was already made.");
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Payment was already made.");
             } else {
                 order.get().setPayment(true);
                 orderRepository.save(order.get());
@@ -100,7 +100,7 @@ public class OrderServiceImpl implements OrderService {
 
     TimerTask task = new TimerTask() {
         public void run() {
-            Date currentDate = new Date(System.currentTimeMillis() - 1000 * 60 * 30);
+            Date currentDate = new Date(System.currentTimeMillis() - 1000 * 60);
             List<Order> orderList = orderRepository.findAllByPaymentAndCreationDateBefore(false, currentDate);
 
             for (Order order : orderList) {

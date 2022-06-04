@@ -1,7 +1,6 @@
 package com.example.rohlik.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jdk.jfr.Enabled;
 
 import javax.persistence.*;
 

@@ -1,6 +1,5 @@
 package com.example.rohlik.controllers;
 
-import com.example.rohlik.models.ItemInOrder;
 import com.example.rohlik.models.ProductOrderDTO;
 import com.example.rohlik.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
