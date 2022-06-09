@@ -25,6 +25,8 @@ public class OrderServiceImpl implements OrderService {
         this.itemInOrderRepository = itemInOrderRepository;
         this.productService = productService;
         Timer timer = new Timer();
+
+        // can you elaborate a bit about this?
         timer.schedule(task, 0, 1000L * 30L);
     }
 
@@ -51,6 +53,7 @@ public class OrderServiceImpl implements OrderService {
             orderRepository.save(order);
             for (ItemInOrder item : itemsInOrder) {
                 item.setOrder(order);
+                // You save the items twice. Why?
                 itemInOrderRepository.save(item);
             }
             return ResponseEntity.status(HttpStatus.CREATED).body(itemsInOrder);
@@ -67,6 +70,7 @@ public class OrderServiceImpl implements OrderService {
             for (ItemInOrder item : itemsInOrder) {
                 productService.findProductByName(item.getProduct().getName()).setQuantityInStock(productService.findProductByName(item.getProduct().getName()).getQuantityInStock() + item.getQuantity());
             }
+            // Why delete? Cam you think of another approach?
             orderRepository.delete(order.get());
             return ResponseEntity.status(HttpStatus.OK).body("The order was cancelled.");
         }
@@ -92,6 +96,7 @@ public class OrderServiceImpl implements OrderService {
     public List<ItemInOrder> createItemsInOrder(List<ProductOrderDTO> productsOrderDTO) {
         List<ItemInOrder> itemsInOrder = new ArrayList<>();
         for (ProductOrderDTO product : productsOrderDTO) {
+            // Why name and not ID?
             itemsInOrder.add(new ItemInOrder(productService.findProductByName(product.getName()), product.getCount()));
         }
         return itemsInOrder;

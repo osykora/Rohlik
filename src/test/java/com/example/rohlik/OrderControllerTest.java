@@ -24,15 +24,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @SpringBootTest
 @TestMethodOrder(OrderAnnotation.class)
+// Missing unit tests
 public class OrderControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    // Why Order?
     @Order(1)
     @Test
     public void createOrder_test() throws Exception {
+        // it uses real db - can you think of any other approach?
         mockMvc.perform(post("/order/create")
                         .contentType(MediaType.APPLICATION_JSON)
+                // do you know how to write it differently using new Java features?
                         .content("[ \n" +
                                 "{\n" +
                                 "    \"name\": \"rajce\",\n" +

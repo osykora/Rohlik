@@ -13,6 +13,7 @@ public class ItemInOrder {
     private Product product;
     private int quantity;
     @ManyToOne
+    // why JsonIgnore?
     @JsonIgnore
     private Order order;
 

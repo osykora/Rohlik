@@ -18,6 +18,7 @@ public class ProductController {
         this.productService = productService;
     }
 
+    // Product is db entity - how would you it differently
     @PostMapping("/create")
     public ResponseEntity<Object> createProduct(@RequestBody Product product){
         return productService.createProduct(product.getName(), product.getQuantityInStock(), product.getPricePerUnit());

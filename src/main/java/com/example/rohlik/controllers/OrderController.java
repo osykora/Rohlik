@@ -14,17 +14,21 @@ public class OrderController {
 
     private final OrderService orderService;
 
+    // Do you know Lombok?
     @Autowired
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
 
 
+    // Do you know Swagger?
+    // Why is response an Object?
     @PostMapping("/create")
     public ResponseEntity<Object> createOrder(@RequestBody List<ProductOrderDTO> productsOrderDTO){
         return orderService.createOrder(productsOrderDTO);
     }
 
+    // What happens when an exception is thrown?
     @GetMapping("/cancel/{id}")
     public ResponseEntity<Object> cancelOrder(@PathVariable long id){
         return orderService.cancelOrder(id);

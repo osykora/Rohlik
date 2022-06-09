@@ -1,5 +1,6 @@
 package com.example.rohlik.models;
 
+// Do you know Record in Java?
 public class ProductOrderDTO {
     String name;
     Integer count;

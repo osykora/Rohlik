@@ -12,6 +12,7 @@ public class Product {
     private Integer quantityInStock;
     private Integer pricePerUnit;
 
+    // is it mandatory to have parameterless ctor?
     public Product() {
     }
 

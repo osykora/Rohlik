@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 
 public interface ProductService {
+    // Why is pricePerUnit Integer?
     ResponseEntity<Object>  createProduct(String name, Integer quantityInStock, Integer pricePerUnit);
     void updateProductQuantityInStock(Product product, int quantity);
     ResponseEntity<Object> deleteProduct(long id);
